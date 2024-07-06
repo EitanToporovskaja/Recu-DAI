@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const preguntaController = require('./preguntas-controller');
+const preguntaController = require('./controller/preguntas-controller');
 
 const app = express();
 const PORT = process.env.PORT || 3000;

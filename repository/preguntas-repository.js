@@ -4,8 +4,8 @@ class PreguntaRepository {
     async crearPregunta(pregunta) {
         const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = pregunta;
         const query = `
-            INSERT INTO Preguntas (Pregunta, Opcion1, Opcion2, Opcion3, Opcion4, RespuestaCorrecta)
-            VALUES ($1, $2, $3, $4, $5, $6)
+            INSERT INTO Preguntas (Pregunta, Opcion1, Opcion2, Opcion3, Opcion4, RespuestaCorrecta, FechaCreacion)
+            VALUES ($1, $2, $3, $4, $5, $6, CURRENT_TIMESTAMP)
             RETURNING *`;
         const values = [preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta];
         const { rows } = await db.query(query, values);

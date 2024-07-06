@@ -1,4 +1,4 @@
-const preguntaRepository = require('./preguntas-repository');
+const preguntaRepository = require('../repository/preguntas-repository');
 
 class PreguntaService {
     async crearPregunta(pregunta) {
