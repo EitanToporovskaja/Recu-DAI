@@ -1,4 +1,4 @@
-const respuestaRepository = require('./respuesta-repository');
+const respuestaRepository = require('../repository/respuesta-repository');
 
 class RespuestaService {
     async crearRespuesta(respuesta) {
