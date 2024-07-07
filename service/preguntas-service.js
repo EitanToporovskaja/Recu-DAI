@@ -1,4 +1,4 @@
-const preguntaRepository = require('../repository/preguntas-repository');
+import preguntaRepository from '../repository/preguntas-repository.js';
 
 class PreguntaService {
     async crearPregunta(pregunta) {

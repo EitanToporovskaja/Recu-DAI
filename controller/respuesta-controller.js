@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const respuestaService = require('../service/respuesta-service');
+import respuestaService from '../service/respuesta-service';
 
 // POST /respuestas - Creación de una respuesta
 router.post('/respuestas', async (req, res) => {
