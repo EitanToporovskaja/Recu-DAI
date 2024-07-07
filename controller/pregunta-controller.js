@@ -1,10 +1,9 @@
 import express from 'express';
 import { PreguntaService } from '../service/pregunta-service.js';
-
 const router = express.Router();
 const preguntaService = new PreguntaService();
 
-router.post('/preguntas', async (req, res) => {
+router.post('/pregunta', async (req, res) => {
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
     const pregunta = {
         preguntaTexto,
@@ -24,7 +23,7 @@ router.post('/preguntas', async (req, res) => {
     }
 });
 
-router.put('/preguntas/:id', async (req, res) => {
+router.put('/pregunta/:id', async (req, res) => {
     const preguntaId = parseInt(req.params.id);
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
     const pregunta = {
@@ -50,7 +49,7 @@ router.put('/preguntas/:id', async (req, res) => {
     }
 });
 
-router.delete('/preguntas/:id', async (req, res) => {
+router.delete('/pregunta/:id', async (req, res) => {
     const preguntaId = parseInt(req.params.id);
 
     try {
@@ -66,7 +65,7 @@ router.delete('/preguntas/:id', async (req, res) => {
     }
 });
 
-router.get('/preguntas/azar', async (req, res) => {
+router.get('/pregunta/azar', async (req, res) => {
     try {
         const preguntaAzar = await preguntaService.obtenerPreguntaAzar();
         res.json(preguntaAzar);
@@ -76,12 +75,12 @@ router.get('/preguntas/azar', async (req, res) => {
     }
 });
 
-router.get('/preguntas', async (req, res) => {
+router.get('/pregunta', async (req, res) => {
     const { palabraClave, orden } = req.query;
 
     try {
-        const preguntas = await preguntaService.obtenerTodasLasPreguntas(palabraClave, orden);
-        res.json(preguntas);
+        const pregunta = await preguntaService.obtenerTodasLasPreguntas(palabraClave, orden);
+        res.json(pregunta);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Hubo un error al obtener las preguntas.' });

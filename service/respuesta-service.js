@@ -1,4 +1,4 @@
-import RespuestaRepository from '../repository/respuesta-repository.js';
+import { RespuestaRepository } from '../repository/respuesta-repository.js';
 
 export class RespuestaService {
     constructor() { 

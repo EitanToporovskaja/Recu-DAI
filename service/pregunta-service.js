@@ -1,8 +1,8 @@
-import PreguntasRepository from '../repository/preguntas-repository.js';
+import { PreguntaRepository } from '../repository/pregunta-repository.js';
 
 export class PreguntaService {
     constructor() {
-        this.preguntaRepository = PreguntasRepository;
+        this.preguntaRepository = PreguntaRepository;
     }
 
     async crearPregunta(pregunta) {
