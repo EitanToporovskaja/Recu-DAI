@@ -1,9 +1,8 @@
 import express from 'express';
-import { PreguntaService } from '../service/preguntas-service.js';
+import { PreguntaService } from '../service/pregunta-service.js';
 
 const router = express.Router();
 const preguntaService = new PreguntaService();
-
 
 router.post('/preguntas', async (req, res) => {
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;

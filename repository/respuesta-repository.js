@@ -1,12 +1,7 @@
 import db from './db.js';
 
 export class RespuestaRepository {
-    constructor() {
-    const { Client } = pg;
-    this.DBClient = new Client(DBConfig);
-    this.DBClient.connect();
-}    
-    
+
     async crearRespuesta(respuesta) {
         const { preguntaId, userId, respuestaSeleccionada, esRespuestaCorrecta } = respuesta;
         const query = `
