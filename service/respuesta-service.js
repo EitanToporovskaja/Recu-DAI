@@ -1,6 +1,10 @@
-const respuestaRepository = require('../repository/respuesta-repository');
+import { RespuestaRepository }  from '../repository/respuesta-repository.js';
 
-class RespuestaService {
+export class RespuestaService {
+constructor() { 
+    this.bd = new RespuestaRepository();
+}
+
     async crearRespuesta(respuesta) {
         return await respuestaRepository.crearRespuesta(respuesta);
     }

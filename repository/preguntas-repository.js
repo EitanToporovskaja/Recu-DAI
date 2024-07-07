@@ -1,6 +1,11 @@
 import db from './db.js';
 
-class PreguntaRepository {
+export class PreguntasRepository {
+    constructor() {
+    const { Client } = pg;
+    this.DBClient = new Client(DBConfig);
+    this.DBClient.connect();
+}    
     async crearPregunta(pregunta) {
         const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = pregunta;
         const query = `
@@ -52,5 +57,3 @@ class PreguntaRepository {
         return rows;
     }
 }
-
-module.exports = new PreguntaRepository();

@@ -1,10 +1,10 @@
-import express from "express";
-
+import express from 'express';
+import { PreguntaService } from '../service/preguntas-service.js';
 
 const router = express.Router();
-const preguntaService = require('../service/preguntas-service');
+const preguntaService = new PreguntaService();
 
-// POST /preguntas - Creación de una pregunta
+
 router.post('/preguntas', async (req, res) => {
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
     const pregunta = {
@@ -25,7 +25,6 @@ router.post('/preguntas', async (req, res) => {
     }
 });
 
-// PUT /preguntas - Actualización de una pregunta
 router.put('/preguntas/:id', async (req, res) => {
     const preguntaId = parseInt(req.params.id);
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
@@ -52,7 +51,6 @@ router.put('/preguntas/:id', async (req, res) => {
     }
 });
 
-// DELETE /preguntas - Eliminado de una pregunta
 router.delete('/preguntas/:id', async (req, res) => {
     const preguntaId = parseInt(req.params.id);
 
@@ -69,7 +67,6 @@ router.delete('/preguntas/:id', async (req, res) => {
     }
 });
 
-// GET /preguntas/azar - Obtención de una pregunta al azar
 router.get('/preguntas/azar', async (req, res) => {
     try {
         const preguntaAzar = await preguntaService.obtenerPreguntaAzar();
@@ -80,7 +77,6 @@ router.get('/preguntas/azar', async (req, res) => {
     }
 });
 
-// GET /preguntas - Obtención de todas las preguntas (con filtrado y ordenamiento)
 router.get('/preguntas', async (req, res) => {
     const { palabraClave, orden } = req.query;
 
@@ -93,4 +89,4 @@ router.get('/preguntas', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

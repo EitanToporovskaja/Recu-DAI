@@ -1,6 +1,9 @@
-import preguntaRepository from '../repository/preguntas-repository.js';
+import { PreguntasRepository } from '../repository/preguntas-repository.js';
 
-class PreguntaService {
+export class PreguntaService {
+    constructor() {
+        this.db = new PreguntasRepository();
+    }   
     async crearPregunta(pregunta) {
         return await preguntaRepository.crearPregunta(pregunta);
     }
@@ -21,5 +24,3 @@ class PreguntaService {
         return await preguntaRepository.obtenerTodasLasPreguntas(palabraClave, orden);
     }
 }
-
-module.exports = new PreguntaService();

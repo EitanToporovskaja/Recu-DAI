@@ -1,8 +1,9 @@
 import express from 'express';
-const router = express.Router();
-import respuestaService from '../service/respuesta-service';
+import { RespuestaService } from '../service/respuesta-service.js';
 
-// POST /respuestas - Creación de una respuesta
+const router = express.Router();
+const respuestaService = new RespuestaService();
+
 router.post('/respuestas', async (req, res) => {
     const { preguntaId, userId, respuestaSeleccionada, esRespuestaCorrecta } = req.body;
     const respuesta = {
@@ -21,7 +22,6 @@ router.post('/respuestas', async (req, res) => {
     }
 });
 
-// GET /respuestas/:userId - Obtención de respuestas por usuario
 router.get('/respuestas/:userId', async (req, res) => {
     const userId = parseInt(req.params.userId);
 
@@ -34,7 +34,6 @@ router.get('/respuestas/:userId', async (req, res) => {
     }
 });
 
-// DELETE /respuestas/:preguntaId - Eliminado de respuestas por pregunta
 router.delete('/respuestas/:preguntaId', async (req, res) => {
     const preguntaId = parseInt(req.params.preguntaId);
 
@@ -47,4 +46,4 @@ router.delete('/respuestas/:preguntaId', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
