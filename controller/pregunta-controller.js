@@ -1,18 +1,18 @@
 import express from 'express';
 import { PreguntaService } from '../service/pregunta-service.js';
+import { Pregunta } from './entities/pregunta.js';
 const router = express.Router();
 const preguntaService = new PreguntaService();
 
-router.post('/pregunta', async (req, res) => {
-    const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
-    const pregunta = {
-        preguntaTexto,
-        opcion1,
-        opcion2,
-        opcion3,
-        opcion4,
-        respuestaCorrecta
-    };
+router.post('/', async (req, res) => {
+    const pregunta = new Pregunta(
+        req.body.preguntaTexto,
+        req.body.opcion1,
+        req.body.opcion2,
+        req.body.opcion3,
+        req.body.opcion4,
+        req.body.respuestaCorrecta
+    );
 
     try {
         const nuevaPregunta = await preguntaService.crearPregunta(pregunta);
@@ -23,7 +23,7 @@ router.post('/pregunta', async (req, res) => {
     }
 });
 
-router.put('/pregunta/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     const preguntaId = parseInt(req.params.id);
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
     const pregunta = {
@@ -49,7 +49,7 @@ router.put('/pregunta/:id', async (req, res) => {
     }
 });
 
-router.delete('/pregunta/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const preguntaId = parseInt(req.params.id);
 
     try {
@@ -65,7 +65,7 @@ router.delete('/pregunta/:id', async (req, res) => {
     }
 });
 
-router.get('/pregunta/azar', async (req, res) => {
+router.get('/azar', async (req, res) => {
     try {
         const preguntaAzar = await preguntaService.obtenerPreguntaAzar();
         res.json(preguntaAzar);
@@ -75,7 +75,7 @@ router.get('/pregunta/azar', async (req, res) => {
     }
 });
 
-router.get('/pregunta', async (req, res) => {
+router.get('/', async (req, res) => {
     const { palabraClave, orden } = req.query;
 
     try {

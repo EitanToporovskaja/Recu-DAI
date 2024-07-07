@@ -1,17 +1,19 @@
 import express from 'express';
 import { RespuestaService } from '../service/respuesta-service.js';
+import { Respuesta } from './entities/respuesta.js';
 
 const router = express.Router();
 const respuestaService = new RespuestaService();
 
-router.post('/respuesta', async (req, res) => {
-    const { preguntaId, userId, respuestaSeleccionada, esRespuestaCorrecta } = req.body;
-    const respuesta = {
-        preguntaId,
-        userId,
-        respuestaSeleccionada,
-        esRespuestaCorrecta
-    };
+router.post('/', async (req, res) => {
+    
+    const respuesta = new Respuesta(
+        null,
+        req.body.preguntaId,
+        req.body.userId,
+        req.body.respuestaSeleccionada,
+        req.body.esRespuestaCorrecta
+    );   
 
     try {
         const nuevaRespuesta = await respuestaService.crearRespuesta(respuesta);
@@ -22,7 +24,7 @@ router.post('/respuesta', async (req, res) => {
     }
 });
 
-router.get('/respuesta/:userId', async (req, res) => {
+router.get('/:userId', async (req, res) => {
     const userId = parseInt(req.params.userId);
 
     try {
@@ -34,7 +36,7 @@ router.get('/respuesta/:userId', async (req, res) => {
     }
 });
 
-router.delete('/respuesta/:preguntaId', async (req, res) => {
+router.delete('/:preguntaId', async (req, res) => {
     const preguntaId = parseInt(req.params.preguntaId);
 
     try {
