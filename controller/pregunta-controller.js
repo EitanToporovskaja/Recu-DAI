@@ -25,8 +25,14 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const preguntaId = parseInt(req.params.id);
+    const preguntaId = parseInt(req.params.id, 10);
+    if (isNaN(preguntaId)) {
+        return res.status(400).json({ message: 'ID de pregunta inválido.' });
+    }
     const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
+    if (!preguntaTexto || !opcion1 || !opcion2 || !opcion3 || !opcion4 || !respuestaCorrecta) {
+        return res.status(400).json({ message: 'Todos los campos son requeridos.' });
+    }
     const pregunta = {
         preguntaId,
         preguntaTexto,
@@ -39,6 +45,8 @@ router.put('/:id', async (req, res) => {
 
     try {
         const preguntaActualizada = await preguntaService.actualizarPregunta(pregunta);
+        console.log("Pregunta actualizada");
+        console.log(preguntaActualizada);
         if (preguntaActualizada) {
             res.json(preguntaActualizada);
         } else {

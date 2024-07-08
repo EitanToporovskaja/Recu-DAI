@@ -7,7 +7,7 @@ export class RespuestaService {
         const returnArray = await repo.crearRespuesta(respuesta)
         return returnArray
     }
-    obtenerRespuestasPorUsuario = async(userId) => {
+    /*obtenerRespuestasPorUsuario = async(userId) => {
         const repo = new RespuestaRepository();
         const returnArray = await repo.obtenerRespuestasPorUsuario(userId)
         return returnArray
@@ -16,5 +16,5 @@ export class RespuestaService {
         const repo = new RespuestaRepository();
         const returnArray = await repo.eliminarRespuestasPorPregunta(preguntaId)
         return returnArray
-    }
+    }*/
 }

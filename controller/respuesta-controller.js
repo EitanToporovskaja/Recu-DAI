@@ -6,7 +6,6 @@ const router = express.Router();
 const respuestaService = new RespuestaService();
 
 router.post('/', async (req, res) => {
-    console.log("holll");
     const respuesta = new Respuesta(
         null,
         req.body.preguntaId,
@@ -17,7 +16,6 @@ router.post('/', async (req, res) => {
 
     try {
         const nuevaRespuesta = await respuestaService.crearRespuesta(respuesta);
-        console.log("holll");
         res.status(201).json(nuevaRespuesta);
     } catch (error) {
         console.error(error);
@@ -25,7 +23,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:userId', async (req, res) => {
+/*router.get('/:userId', async (req, res) => {
     const userId = parseInt(req.params.userId);
 
     try {
@@ -47,6 +45,6 @@ router.delete('/:preguntaId', async (req, res) => {
         console.error(error);
         res.status(400).json({ message: 'Hubo un error al eliminar las respuestas.' });
     }
-});
+});*/
 
 export default router;
