@@ -1,22 +1,23 @@
 import { PreguntaRepository } from '../repository/pregunta-repository.js';
 
 export class PreguntaService {
-    constructor() {
-        this.preguntaRepository = PreguntaRepository;
-    }
 
-    async crearPregunta(pregunta) {
-        return await this.preguntaRepository.crearPregunta(pregunta);
+    crearPregunta = async(pregunta) => {
+        const repo = new PreguntaRepository();
+        const returnArray = await repo.crearPregunta(pregunta)
+        return returnArray
     }
-
-    async actualizarPregunta(pregunta) {
-        return await this.preguntaRepository.actualizarPregunta(pregunta);
+    actualizarPregunta = async(pregunta) => {
+        const repo = new PreguntaRepository();
+        const returnArray = await repo.actualizarPregunta(pregunta)
+        return returnArray
     }
-
-    async eliminarPregunta(preguntaId) {
-        return await this.preguntaRepository.eliminarPregunta(preguntaId);
+    eliminarPregunta = async(preguntaId) => {
+        const repo = new PreguntaRepository();
+        const returnArray = await repo.eliminarPregunta(preguntaId)
+        return returnArray
     }
-
+   
     async obtenerPreguntaAzar() {
         return await this.preguntaRepository.obtenerPreguntaAzar();
     }

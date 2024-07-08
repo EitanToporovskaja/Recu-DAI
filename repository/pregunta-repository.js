@@ -3,6 +3,8 @@ import db from './db.js';
 export class PreguntaRepository {
  
     async crearPregunta(pregunta) {
+        console.log("holll");
+
         const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = pregunta;
         const query = `
             INSERT INTO Pregunta (Pregunta, Opcion1, Opcion2, Opcion3, Opcion4, RespuestaCorrecta, FechaCreacion)

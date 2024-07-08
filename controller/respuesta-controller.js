@@ -6,7 +6,7 @@ const router = express.Router();
 const respuestaService = new RespuestaService();
 
 router.post('/', async (req, res) => {
-    
+    console.log("holll");
     const respuesta = new Respuesta(
         null,
         req.body.preguntaId,
@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
 
     try {
         const nuevaRespuesta = await respuestaService.crearRespuesta(respuesta);
+        console.log("holll");
         res.status(201).json(nuevaRespuesta);
     } catch (error) {
         console.error(error);
