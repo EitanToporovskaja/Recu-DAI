@@ -1,9 +1,9 @@
 import express from 'express';
 import { PreguntaService } from '../service/pregunta-service.js';
 import { Pregunta } from './entities/pregunta.js';
+
 const router = express.Router();
 const preguntaService = new PreguntaService();
-console.log("holll");
 
 router.post('/', async (req, res) => {
     const pregunta = new Pregunta(
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
         res.status(201).json(nuevaPregunta);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al crear la pregunta.' });
+        res.status(400).json({ message: 'Hubo un error al crear la pregunta.' });
     }
 });
 
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al actualizar la pregunta.' });
+        res.status(400).json({ message: 'Hubo un error al actualizar la pregunta.' });
     }
 });
 
@@ -62,7 +62,7 @@ router.delete('/:id', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al eliminar la pregunta.' });
+        res.status(400).json({ message: 'Hubo un error al eliminar la pregunta.' });
     }
 });
 
@@ -72,7 +72,7 @@ router.get('/azar', async (req, res) => {
         res.json(preguntaAzar);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al obtener una pregunta al azar.' });
+        res.status(400).json({ message: 'Hubo un error al obtener una pregunta al azar.' });
     }
 });
 

@@ -1,7 +1,6 @@
 import express from 'express';
 import PreguntaController from './controller/pregunta-controller.js';
 import RespuestaController from './controller/respuesta-controller.js';
-console.log("holll");
 
 const app = express();
 

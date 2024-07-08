@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
         res.status(201).json(nuevaRespuesta);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al crear la respuesta.' });
+        res.status(400).json({ message: 'Hubo un error al crear la respuesta.' });
     }
 });
 
@@ -33,7 +33,7 @@ router.get('/:userId', async (req, res) => {
         res.json(respuesta);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al obtener las respuestas del usuario.' });
+        res.status(400).json({ message: 'Hubo un error al obtener las respuestas del usuario.' });
     }
 });
 
@@ -45,7 +45,7 @@ router.delete('/:preguntaId', async (req, res) => {
         res.json({ message: `Respuestas para la pregunta con ID ${preguntaId} eliminadas.` });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Hubo un error al eliminar las respuestas.' });
+        res.status(400).json({ message: 'Hubo un error al eliminar las respuestas.' });
     }
 });
 
