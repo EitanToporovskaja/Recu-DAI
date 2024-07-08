@@ -14,19 +14,4 @@ export class RespuestaRepository {
         return rows[0];
     }
 
-   /* async obtenerRespuestasPorUsuario(userId) {
-
-        const query = 'SELECT * FROM Respuesta WHERE UserId = $1';
-        const values = [userId];
-        const { rows } = await db.query(query, values);
-        return rows;
-    }
-
-    async eliminarRespuestasPorPregunta(preguntaId) {
-
-        const query = 'DELETE FROM Respuesta WHERE PreguntaId = $1 RETURNING *';
-        const values = [preguntaId];
-        const { rows } = await db.query(query, values);
-        return rows;
-    }*/
 }

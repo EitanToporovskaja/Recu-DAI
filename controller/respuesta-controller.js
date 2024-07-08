@@ -23,28 +23,5 @@ router.post('/', async (req, res) => {
     }
 });
 
-/*router.get('/:userId', async (req, res) => {
-    const userId = parseInt(req.params.userId);
-
-    try {
-        const respuesta = await respuestaService.obtenerRespuestasPorUsuario(userId);
-        res.json(respuesta);
-    } catch (error) {
-        console.error(error);
-        res.status(400).json({ message: 'Hubo un error al obtener las respuestas del usuario.' });
-    }
-});
-
-router.delete('/:preguntaId', async (req, res) => {
-    const preguntaId = parseInt(req.params.preguntaId);
-
-    try {
-        const respuestasEliminadas = await respuestaService.eliminarRespuestasPorPregunta(preguntaId);
-        res.json({ message: `Respuestas para la pregunta con ID ${preguntaId} eliminadas.` });
-    } catch (error) {
-        console.error(error);
-        res.status(400).json({ message: 'Hubo un error al eliminar las respuestas.' });
-    }
-});*/
 
 export default router;
