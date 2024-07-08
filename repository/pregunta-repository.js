@@ -40,7 +40,7 @@ export class PreguntaRepository {
         return rows[0];
     }
 
-    async obtenerTodasLasPregunta(palabraClave, orden) {
+    async obtenerTodasLasPreguntas(palabraClave, orden) {
         let query = 'SELECT * FROM Pregunta';
 
         if (palabraClave) {
