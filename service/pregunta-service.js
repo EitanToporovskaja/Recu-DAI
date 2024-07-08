@@ -17,12 +17,15 @@ export class PreguntaService {
         const returnArray = await repo.eliminarPregunta(preguntaId)
         return returnArray
     }
-   
-    async obtenerPreguntaAzar() {
-        return await this.preguntaRepository.obtenerPreguntaAzar();
-    }
 
-    async obtenerTodasLasPreguntas(palabraClave, orden) {
-        return await this.preguntaRepository.obtenerTodasLasPreguntas(palabraClave, orden);
+    obtenerPreguntaAzar = async() => {  
+        const repo = new PreguntaRepository();
+        const returnArray = await repo.obtenerPreguntaAzar()
+        return returnArray
+    }
+    obtenerTodasLasPreguntas = async(palabraClave, orden) => {
+        const repo = new PreguntaRepository();
+        const returnArray = await repo.obtenerTodasLasPreguntas(palabraClave, orden)
+        return returnArray
     }
 }
