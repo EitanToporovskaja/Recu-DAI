@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "df5c22b2-aff7-4132-b683-f57d211a5ad5",
+		"name": "Recu-DAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36755470"
+	},
+	"item": [
+		{
+			"name": "Pregunta",
+			"item": [
+				{
+					"name": "obtenerTodasLasPreguntas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3508/api/pregunta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3508",
+							"path": [
+								"api",
+								"pregunta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPreguntaAzar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3508/api/pregunta/azar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3508",
+							"path": [
+								"api",
+								"pregunta",
+								"azar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearPregunta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"preguntaTexto\" : \"¿Quien es profe de DAI?\",\r\n    \"opcion1\": \"Jessie\",\r\n    \"opcion2\": \"Stanca\",\r\n    \"opcion3\": \"Mauricio\",\r\n    \"opcion4\": \"Julian\",\r\n    \"respuestaCorrecta\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3508/api/pregunta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3508",
+							"path": [
+								"api",
+								"pregunta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarPregunta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"preguntaid\": 11,\r\n    \"preguntaTexto\" : \"¿Quien es profe de DAI?\",\r\n    \"opcion1\": \"Jessie\",\r\n    \"opcion2\": \"Stanca\",\r\n    \"opcion3\": \"Mauricio\",\r\n    \"opcion4\": \"Julian\",\r\n    \"respuestaCorrecta\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3508/api/pregunta/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3508",
+							"path": [
+								"api",
+								"pregunta",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarPregunta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{puerto}}/api/pregunta/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"api",
+								"pregunta",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Respuesta",
+			"item": [
+				{
+					"name": "crearRespuesta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"preguntaId\": 1,\r\n    \"userId\": 101,\r\n    \"respuestaSeleccionada\": 1,\r\n    \"esRespuestaCorrecta\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/respuesta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"respuesta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
