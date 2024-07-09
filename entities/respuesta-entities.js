@@ -1,7 +1,8 @@
 export class Respuesta {
-    constructor(preguntaId, userId, respuesta) {
+    constructor(preguntaId, userId, respuestaSeleccionada, esRepuestaCorrecta) {
         this.preguntaId = preguntaId;
         this.userId = userId;
-        this.respuesta = respuesta;
+        this.respuestaSeleccionada = respuestaSeleccionada;
+        this.esRepuestaCorrecta = esRepuestaCorrecta;
     }
 }
