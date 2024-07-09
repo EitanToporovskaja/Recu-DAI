@@ -7,7 +7,6 @@ const respuestaService = new RespuestaService();
 
 router.post('/', async (req, res) => {
     const respuesta = new Respuesta(
-        null,
         req.body.preguntaId,
         req.body.userId,
         req.body.respuestaSeleccionada,
@@ -18,8 +17,9 @@ router.post('/', async (req, res) => {
         const nuevaRespuesta = await respuestaService.crearRespuesta(respuesta);
         res.status(201).json(nuevaRespuesta);
     } catch (error) {
-        console.error(error);
-        res.status(400).json({ message: 'Hubo un error al crear la respuesta.' });
+        console.error('Error al crear la respuesta:', error);
+        res.status(400).json({ message: 'Hubo un error al crear la respuesta.', error: error.message });
+        //toma como null el userId, respuestaSeleccionada y esRespuestaCorrecta.
     }
 });
 
