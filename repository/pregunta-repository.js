@@ -13,7 +13,6 @@ export class PreguntaRepository {
         const { rows } = await db.query(query, values);
         return rows[0];
     }
-// Postgress. En la tabla Pregunta, si en vez de pregunta dice preguntaTexto funciona, pero deja de funcionar el crear y delete
     async actualizarPregunta(pregunta) {
         const { preguntaId, preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = pregunta;
         const query = `

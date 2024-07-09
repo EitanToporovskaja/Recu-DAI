@@ -1,6 +1,6 @@
 import express from 'express';
 import { PreguntaService } from '../service/pregunta-service.js';
-import { Pregunta } from './entities/pregunta.js';
+import { Pregunta } from '../entities/pregunta-entities.js';
 
 const router = express.Router();
 const preguntaService = new PreguntaService();

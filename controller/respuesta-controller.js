@@ -1,6 +1,6 @@
 import express from 'express';
 import { RespuestaService } from '../service/respuesta-service.js';
-import { Respuesta } from './entities/respuesta.js';
+import { Respuesta } from '../entities/respuesta-entities.js';
 
 const router = express.Router();
 const respuestaService = new RespuestaService();
@@ -12,7 +12,6 @@ router.post('/', async (req, res) => {
         req.body.respuestaSeleccionada,
         req.body.esRespuestaCorrecta
     );   
-    //const verifyObject = respuesta.verifyObject();
     try {
         const nuevaRespuesta = await respuestaService.crearRespuesta(respuesta);
         res.status(201).json(nuevaRespuesta);

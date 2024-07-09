@@ -11,7 +11,7 @@ export class RespuestaRepository {
             VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP)
             RETURNING *`;
         const values = [preguntaId, userId, respuestaSeleccionada, esRespuestaCorrecta];
-        console.log("Valores enviados al query:", values); // Agregar este log  
+        console.log("Valores enviados al query:", values); 
         const { rows } = await db.query(query, values);
         return rows[0];
     }
