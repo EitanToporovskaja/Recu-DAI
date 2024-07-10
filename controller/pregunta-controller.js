@@ -87,7 +87,7 @@ router.get('/azar', async (req, res) => {
 router.get('/', async (req, res) => {
     const { palabraClave, orden } = req.query;
 
-    try {
+    try { 
         const pregunta = await preguntaService.obtenerTodasLasPreguntas(palabraClave, orden);
         res.json(pregunta);
     } catch (error) {

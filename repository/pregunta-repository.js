@@ -40,16 +40,21 @@ export class PreguntaRepository {
 
     async obtenerTodasLasPreguntas(palabraClave, orden) {
         let query = 'SELECT * FROM Pregunta';
+        let values = [];
 
         if (palabraClave) {
-            query += ` WHERE LOWER(Pregunta) LIKE LOWER('%${palabraClave}%')`;
+            query += ` WHERE LOWER(Pregunta) LIKE '%' || LOWER($1) || '%'`;
+            values.push(palabraClave);
+            console.log(values);    
         }
-
+        
         if (orden === 'fecha') {
-            query += ' ORDER BY FechaCreacion';
+            query += ' ORDER BY FechaCreacion DESC';
         }
 
-        const { rows } = await db.query(query);
+        const { rows } = await db.query(query, values);
         return rows;
+
     }
+    
 }
