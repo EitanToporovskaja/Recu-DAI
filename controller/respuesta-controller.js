@@ -11,10 +11,10 @@ router.post('/', async (req, res) => {
         req.body.preguntaId,
         req.body.userId,
         req.body.respuestaSeleccionada,
-        null
+        req.body.esRespuestaCorrecta
     );   
 
-    if (!respuesta.preguntaId || !respuesta.userId || !respuesta.respuestaSeleccionada) {
+    if (!respuesta.preguntaId || !respuesta.userId || !respuesta.respuestaSeleccionada || !respuesta.esRespuestaCorrecta) {
         return res.status(400).json({ message: 'Todos los campos son requeridos.' });
     }
 
