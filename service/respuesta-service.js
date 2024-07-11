@@ -1,10 +1,12 @@
 import { RespuestaRepository } from '../repository/respuesta-repository.js';
 
 export class RespuestaService {
+    constructor() {
+        this.bd = new RespuestaRepository();
+    }
 
     crearRespuesta = async (respuesta) => {
-        const repo = new RespuestaRepository();
-        const returnArray = await repo.crearRespuesta(respuesta)
+        const returnArray = await this.bd.crearRespuesta(respuesta)
         return returnArray
     }
    

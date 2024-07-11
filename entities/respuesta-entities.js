@@ -1,5 +1,6 @@
 export class Respuesta {
-    constructor(preguntaId, userId, respuestaSeleccionada, esRespuestaCorrecta) {
+    constructor(id, preguntaId, userId, respuestaSeleccionada, esRespuestaCorrecta) {
+        this.id = id;
         this.preguntaId = preguntaId;
         this.userId = userId;
         this.respuestaSeleccionada = respuestaSeleccionada;

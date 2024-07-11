@@ -7,6 +7,7 @@ const preguntaService = new PreguntaService();
 
 router.post('/', async (req, res) => {
     const pregunta = new Pregunta(
+        null,
         req.body.preguntaTexto,
         req.body.opcion1,
         req.body.opcion2,
@@ -14,6 +15,10 @@ router.post('/', async (req, res) => {
         req.body.opcion4,
         req.body.respuestaCorrecta
     );
+
+    if (!pregunta.preguntaTexto || !pregunta.opcion1 || !pregunta.opcion2 || !pregunta.opcion3 || !pregunta.opcion4 || !pregunta.respuestaCorrecta) {
+        return res.status(400).json({ message: 'Todos los campos son requeridos.' });
+    }
 
     try {
         const nuevaPregunta = await preguntaService.crearPregunta(pregunta);
@@ -29,20 +34,16 @@ router.put('/:id', async (req, res) => {
     if (isNaN(preguntaId)) {
         return res.status(400).json({ message: 'ID de pregunta inválido.' });
     }
-    const { preguntaTexto, opcion1, opcion2, opcion3, opcion4, respuestaCorrecta } = req.body;
-    if (!preguntaTexto || !opcion1 || !opcion2 || !opcion3 || !opcion4 || !respuestaCorrecta) {
-        return res.status(400).json({ message: 'Todos los campos son requeridos.' });
-    }
-    const pregunta = {
-        preguntaId,
-        preguntaTexto,
-        opcion1,
-        opcion2,
-        opcion3,
-        opcion4,
-        respuestaCorrecta
-    };
 
+    const pregunta = new Pregunta(
+        preguntaId,
+        req.body.preguntaTexto,
+        req.body.opcion1,
+        req.body.opcion2,
+        req.body.opcion3,
+        req.body.opcion4,
+        req.body.respuestaCorrecta
+    );
     try {
         const preguntaActualizada = await preguntaService.actualizarPregunta(pregunta);
         console.log("Pregunta actualizada");
@@ -85,7 +86,8 @@ router.get('/azar', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    const { palabraClave, orden } = req.query;
+    const palabraClave = req.query.palabraClave;
+    const orden = req.query.orden;
 
     try { 
         const pregunta = await preguntaService.obtenerTodasLasPreguntas(palabraClave, orden);

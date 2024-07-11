@@ -7,11 +7,17 @@ const respuestaService = new RespuestaService();
 
 router.post('/', async (req, res) => {
     const respuesta = new Respuesta(
+        null,
         req.body.preguntaId,
         req.body.userId,
         req.body.respuestaSeleccionada,
-        req.body.esRespuestaCorrecta
+        null
     );   
+
+    if (!respuesta.preguntaId || !respuesta.userId || !respuesta.respuestaSeleccionada) {
+        return res.status(400).json({ message: 'Todos los campos son requeridos.' });
+    }
+
     try {
         const nuevaRespuesta = await respuestaService.crearRespuesta(respuesta);
         res.status(201).json(nuevaRespuesta);
